@@ -1,0 +1,36 @@
+html, body {
+	position: relative;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+}
+
+*, *::after, *::before {
+	box-sizing: border-box;
+}
+
+#root {
+	min-height: 100vh;
+	width: 100vw;
+	/* justify-content: space-between;
+	align-items: center;
+	display: flex;
+	flex-direction: column; */
+}
+
+.container {
+	width: 80%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.container p {
+	margin-bottom: 1rem;
+}
+
+.container a {
+	text-decoration: underline;
+	color: blue;
+}
