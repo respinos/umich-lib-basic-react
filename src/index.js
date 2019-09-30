@@ -7,6 +7,10 @@ import {
   GlobalStyleSheet
  } from '@umich-lib/core';
 
+window.benching = window.benching || [];
+window.benching.push(-2);
+window.benching.push(performance.now());
+
 // ReactDOM.render(
 //   <UniversalHeader/>,
 //   document.querySelector('[data-is="universal-header"]')
@@ -23,6 +27,8 @@ defaults['chat'] = {fixed: true};
 var div = document.createElement('div');
 document.body.appendChild(div);
 ReactDOM.render(<GlobalStyleSheet />, div);
+
+window.benching.push(performance.now());
 
 var components = {};
 var possibles = document.querySelectorAll('[data-is]');
@@ -41,3 +47,10 @@ for(var i = 0; i < possibles.length; i++) {
     )
 	}
 }
+
+window.benching.push(performance.now());
+
+fetch(`https://quod.lib.umich.edu/1x1.json?${window.benching.join(',')}`, {
+  mode: 'no-cors',
+  cache: 'no-cache'
+})
